@@ -2,7 +2,7 @@
   "name": "sprint.knex-dig",
   "private": true,
   "scripts": {
-    "dev": "src/server.js",
+    "dev": "nodemon ./src/server.js",
     "test": "mocha --require test/setup.js",
     "test:watch": "mocha --watch",
     "lint": "eslint --fix --ext .js .",
@@ -14,6 +14,7 @@
     "db:reset": "knex migrate:rollback --all && knex migrate:latest && knex seed:run"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.0",

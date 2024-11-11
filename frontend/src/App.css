@@ -1,5 +1,10 @@
-body {
-    background-color: white;
+body{
+    background-color: #FFFFFF;
+}
+
+#header {
+    background-color: #b06b41;
+    margin: 0;
 }
 
 img {
