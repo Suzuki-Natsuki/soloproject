@@ -1,0 +1,43 @@
+body {
+    background-color: #b06b41;
+}
+
+label {
+    color: white;
+    margin: 20px;
+    font-size: 30px;
+    font-family:"Hannotate SC", cursive;
+}
+
+input {
+    font-size: 25px;
+}
+
+#icon {
+    width: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.login{
+    text-align:  center;
+    margin-top: 30px;
+}
+
+.loginButton {
+    background-color: #65300d;
+    color: #FFF;
+    border-color: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family:"Hannotate SC", cursive;
+    box-shadow: 0 5px 0 #68453e;
+}
+.loginButton:hover {
+    color: #FFF;
+    opacity: 0.6;
+}
