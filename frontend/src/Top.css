@@ -1,0 +1,27 @@
+ul{
+    padding-left:0;
+}
+
+li{
+    margin: 20px;
+    padding: 20px;
+    list-style:none;
+    width: 200px;
+    background-color: #ffdeb5;
+    text-align: center;
+    border-radius:10%;
+}
+
+.petImg {
+    width: 150px;
+    height: 150px;
+    border-radius:50%;
+    background-color: antiquewhite;
+
+}
+
+.profile {
+    color: #FFFFFF;
+    text-align: left;
+    font-family: "Hannotate SC", cursive;
+}

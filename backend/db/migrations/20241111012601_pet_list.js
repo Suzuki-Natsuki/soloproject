@@ -8,6 +8,7 @@ exports.up = function(knex) {
         table.string("name").notNullable();
         table.timestamp("birthday").notNullable();
         table.string("dog_breed").notNullable();
+        table.string("picture_src").notNullable();
     })
 };
 
