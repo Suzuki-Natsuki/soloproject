@@ -10,4 +10,12 @@ module.exports = {
     return pets_list.slice(0, limit);
   },
 
+  async walkDataAll(limit = 100) {
+    const pets_list = await db("pets_walk");
+    return pets_list.slice(0, limit);
+  },
+
+  async walkTimeSave(payload) {
+    return  await db('pets_walk').insert(payload);
+  },
 }

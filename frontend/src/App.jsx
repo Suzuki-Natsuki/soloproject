@@ -1,15 +1,9 @@
-import { useState , useEffect, createContext } from 'react'
+import { useState , useEffect } from 'react'
 
+import {updateContext, petPicturesContext, petDataContext } from './context'
+import {petWalkDataContext, petMealDataContext} from './context'
 import './App.css'
-
 import {Top} from "./Top";
-
-//Global State
-export const updateContext = createContext()
-export const petPicturesContext = createContext()
-export const petDataContext = createContext()
-export const petWalkDataContext = createContext()
-export const petMealDataContext = createContext()
 
 const composeComponents = (...components) => {
     if (components.length === 0) {
@@ -29,8 +23,8 @@ export function App() {
   //Global State
   const [update, setUpdate] = useState(false);
   const [petData, setPetData] = useState([]);
-  // const [petWalkData, setPetWalkData] = useState([]);
-  // const [petMealData, setPetMealData] = useState([]);
+  const [petWalkData, setPetWalkData] = useState([]);
+  const [petMealData, setPetMealData] = useState([]);
 
   const petPictures =
         useState(
@@ -46,17 +40,24 @@ export function App() {
         (props) => <updateContext.Provider {...props} value={[update, setUpdate]}/>,
         (props) => <petPicturesContext.Provider {...props} value={petPictures}/>,
         (props) => <petDataContext.Provider {...props} value={[petData, setPetData]}/>,
-        // (props) => <petWalkDataContext.Provider {...props} value={[petWalkData, setPetWalkData]}/>,
-        // (props) => <petMealDataContext.Provider {...props} value={[petMealData, setPetMealData]}/>,
+        (props) => <petWalkDataContext.Provider {...props} value={[petWalkData, setPetWalkData]}/>,
+        (props) => <petMealDataContext.Provider {...props} value={[petMealData, setPetMealData]}/>,
     );
 
   useEffect(() => {
-      //ペット情報
-    fetch("/pets")
-        .then((res) => res.json())
-        .then((data) => setPetData([...petData, data[0]]));
 
-  },[])
+      //ペット情報
+      fetch("/pets")
+          .then((res) => res.json())
+          .then((data) => setPetData(data));
+
+      fetch("/pets/walk")
+          .then((res) => res.json())
+          .then((data) => setPetWalkData(data));
+
+      setUpdate(false)
+
+  },[update])
 
   return (
       <ComposedProvider>
