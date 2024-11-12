@@ -9,18 +9,26 @@ export function Top() {
         const date = new Date(pet.birthday)
         const birthdayTxt = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
         return (
-            <li key={pet.id}>
-                <img  className={"petImg"} src={pet.picture_src} alt={pet.name}/>
-                <div className={"profile"}>
-                    <p><b>Name:</b> {pet.name}</p>
-                    <p><b>Birthday:</b> {birthdayTxt}</p>
-                    <p><b>Breed:</b> {pet.dog_breed}</p>
+            <div key={pet.id} className={"pet"}>
+                <li>
+                    <img className={"petImg"} src={pet.picture_src} alt={pet.name}/>
+                    <div className={"profile"}>
+                        <p><b>Name:</b> {pet.name}</p>
+                        <p><b>Birthday:</b> {birthdayTxt}</p>
+                        <p><b>Breed:</b> {pet.dog_breed}</p>
+                    </div>
+                </li>
+                <div className="button_line004">
+                    <p>前回の散歩：</p>
+                    <a href="#" >散歩行ったよ！</a>
+                    <p>前回のご飯：</p>
+                    <a href="#">ご飯食べたよ!</a>
                 </div>
-            </li>
+            </div>
         )
     })
 
-    return(
+    return (
         <ul>{myPets}</ul>
     )
 

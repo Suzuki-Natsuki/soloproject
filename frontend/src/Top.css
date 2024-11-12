@@ -23,5 +23,62 @@ li{
 .profile {
     color: #FFFFFF;
     text-align: left;
-    font-family: "Hannotate SC", cursive;
+}
+
+.pet {
+    display: flex;
+}
+
+/* LINE004 */
+.button_line004 {
+    margin-top: 50px;
+}
+
+.button_line004 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*margin: 0 auto;*/
+    margin: 30px;
+    max-width: 200px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    text-decoration: none;
+}
+.button_line004 a:before,
+.button_line004 a:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-color: #c1b681;
+    box-sizing: border-box;
+    border-style :solid;
+    display: block;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+.button_line004 a:before {
+    top: -6px;
+    left: -6px;
+    border-width: 2px 0 0 2px;
+    z-index: 5;
+}
+.button_line004 a:after {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 2px 2px 0;
+}
+.button_line004 a:hover:before,
+.button_line004 a:hover:after {
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-color: #c1b681;
+}
+.button_line004 a:hover {
+    color: #fff;
+    background-color: #c1b681;
+    border-color: #c1b681;
 }
