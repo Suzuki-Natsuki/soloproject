@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 
 //Global State
+export const topViewContext = createContext()
 export const updateContext = createContext()
 export const petPicturesContext = createContext()
 export const petDataContext = createContext()

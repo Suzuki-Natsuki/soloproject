@@ -19,9 +19,9 @@ export function List({petName, walkList, mealList}) {
     let title = ''
 
     if(walkList.length > 0) {
-      title = "過去食事時間"
+      title = "過去散歩時間"
     } else if(mealList.length > 0) {
-        title = "過去散歩時間"
+        title = "過去食事時間"
     }
 
     return(

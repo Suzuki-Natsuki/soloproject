@@ -42,6 +42,18 @@ app.get('/pets/meal/save', (req, res) => {
   })
 })
 
+app.get('/pets/addPet', (req, res) => {
+  const query = req.query
+  const name = query.name
+  const birthday = query.birthday
+  const dog_breed = query.dog_breed
+  const picture_src = query.picture_src
+  const body = {name, birthday, dog_breed, picture_src}
+  pets_info.addPetSave(body).then(addPet => {
+    res.json(addPet);
+  })
+})
+
 
 
 const PORT = process.env.PORT || 3000;

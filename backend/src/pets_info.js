@@ -27,4 +27,8 @@ module.exports = {
   async mealTimeSave(payload) {
     return  await db('pets_meal').insert(payload);
   },
+
+  async addPetSave(payload) {
+    return  await db('pets').insert(payload);
+  },
 }

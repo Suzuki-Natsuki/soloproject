@@ -1,0 +1,36 @@
+.input a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background: #ffb558;
+    padding: 18px 30px;
+    border-radius: 6px;
+    transition: .3s;
+}
+.input a:hover {
+    background: #ffe19e;
+}
+
+.input img {
+    margin: 20px;
+    width: auto;
+    height: 200px;
+}
+
+.inputLabel {
+    display: block;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.inputBox {
+    font-size: 20px;
+    margin-left: 30px;
+    width: 200px;
+}
+
+.add {
+    width: 350px;
+    text-align: center;
+
+}

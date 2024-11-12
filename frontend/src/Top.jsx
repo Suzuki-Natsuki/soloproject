@@ -1,10 +1,11 @@
 import {useState, useContext} from "react";
 import {List} from "./List";
-import {updateContext ,petDataContext, petWalkDataContext, petMealDataContext} from "./context";
+import {topViewContext, updateContext ,petDataContext, petWalkDataContext, petMealDataContext} from "./context";
 
 import './Top.css'
 
 export function Top() {
+    const [, setTopView] = useContext(topViewContext);
     const [, setUpdate] = useContext(updateContext);
     const [petData] = useContext(petDataContext);
     const [petWalkData] = useContext(petWalkDataContext);
@@ -19,15 +20,21 @@ export function Top() {
         const birthdayTxt = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
         function getLastWalkTime() {
-            const walkTime = new Date(petWalkData.findLast((data) => data.pet_id === pet.id).walk_time)
-            walkTime.setHours(walkTime.getHours() - 9);
-            return `${walkTime.getFullYear()}/${walkTime.getMonth() + 1}/${walkTime.getDate()} ${walkTime.getHours().toString().padStart(2, '0')}:${walkTime.getMinutes().toString().padStart(2, '0')}`
+            const walkDataTR = petWalkData.find(data => data.pet_id === pet.id)
+            if (walkDataTR) {
+                const walkTime = new Date(petWalkData.findLast((data) => data.pet_id === pet.id).walk_time)
+                walkTime.setHours(walkTime.getHours() - 9);
+                return `${walkTime.getFullYear()}/${walkTime.getMonth() + 1}/${walkTime.getDate()} ${walkTime.getHours().toString().padStart(2, '0')}:${walkTime.getMinutes().toString().padStart(2, '0')}`
+            }
         }
 
         function getLastMealTime() {
-            const mealTime = new Date(petMealData.findLast((data) => data.pet_id === pet.id).meal_time)
-            mealTime.setHours(mealTime.getHours() - 9);
-            return `${mealTime.getFullYear()}/${mealTime.getMonth() + 1}/${mealTime.getDate()} ${mealTime.getHours().toString().padStart(2, '0')}:${mealTime.getMinutes().toString().padStart(2, '0')}`
+            const mealDataTR = petMealData.find(data => data.pet_id === pet.id)
+            if (mealDataTR) {
+                const mealTime = new Date(petMealData.findLast((data) => data.pet_id === pet.id).meal_time)
+                mealTime.setHours(mealTime.getHours() - 9);
+                return `${mealTime.getFullYear()}/${mealTime.getMonth() + 1}/${mealTime.getDate()} ${mealTime.getHours().toString().padStart(2, '0')}:${mealTime.getMinutes().toString().padStart(2, '0')}`
+            }
         }
 
         return (
@@ -75,7 +82,7 @@ export function Top() {
         <>
             <ul>{myPets}</ul>
             <p className={"addPets"}>
-                <a href="#" className="addButton">ペット追加</a>
+                <a href="#" className="addButton" onClick={() => setTopView(false)}>ペット追加</a>
             </p>
         </>
     )

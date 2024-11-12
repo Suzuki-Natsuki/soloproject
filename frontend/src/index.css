@@ -2,14 +2,14 @@ body {
     background-color: #b06b41;
 }
 
-label {
+.login label {
     color: white;
     margin: 20px;
     font-size: 30px;
     font-family:"Hannotate SC", cursive;
 }
 
-input {
+.login input {
     font-size: 25px;
 }
 

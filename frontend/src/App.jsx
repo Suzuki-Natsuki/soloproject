@@ -1,10 +1,11 @@
 import { useState , useEffect } from 'react'
 
-import {updateContext, petPicturesContext, petDataContext } from './context'
+import {topViewContext, updateContext, petPicturesContext, petDataContext } from './context'
 import {petWalkDataContext, petMealDataContext} from './context'
 import {listViewContext} from "./context";
 import './App.css'
 import {Top} from "./Top";
+import {Addpet} from "./Addpet";
 
 const composeComponents = (...components) => {
     if (components.length === 0) {
@@ -18,10 +19,9 @@ const composeComponents = (...components) => {
 
 export function App() {
 
-  //useStateの初期値（空）を設定
-  const [topView, setTopView] = useState(true);
 
   //Global State
+  const [topView, setTopView] = useState(true);
   const [update, setUpdate] = useState(false);
   const [petData, setPetData] = useState([]);
   const [petWalkData, setPetWalkData] = useState([]);
@@ -39,6 +39,7 @@ export function App() {
             "../pic/鳥.png",])
 
     const ComposedProvider = composeComponents(
+        (props) => <topViewContext.Provider {...props} value={[topView, setTopView]}/>,
         (props) => <updateContext.Provider {...props} value={[update, setUpdate]}/>,
         (props) => <petPicturesContext.Provider {...props} value={petPictures}/>,
         (props) => <petDataContext.Provider {...props} value={[petData, setPetData]}/>,
@@ -62,6 +63,8 @@ export function App() {
           .then((res) => res.json())
           .then((data) => setPetMealData(data));
 
+      console.log(petData)
+
       setUpdate(false)
 
   },[update])
@@ -69,10 +72,8 @@ export function App() {
   return (
       <ComposedProvider>
           <div id={"header"}>
-              <img src={"../pic/icon.png"} alt={"TopButton"} onClick={() => {
-                  setTopView(true)
-              }}/>
-              {topView && <Top />}
+              <img src={"../pic/icon.png"} alt={"TopButton"} onClick={() => setTopView(true)}/>
+              {topView ? <Top /> : <Addpet />}
           </div>
       </ComposedProvider>
   )
