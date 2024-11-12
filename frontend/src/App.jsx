@@ -2,6 +2,7 @@ import { useState , useEffect } from 'react'
 
 import {updateContext, petPicturesContext, petDataContext } from './context'
 import {petWalkDataContext, petMealDataContext} from './context'
+import {listViewContext} from "./context";
 import './App.css'
 import {Top} from "./Top";
 
@@ -25,6 +26,7 @@ export function App() {
   const [petData, setPetData] = useState([]);
   const [petWalkData, setPetWalkData] = useState([]);
   const [petMealData, setPetMealData] = useState([]);
+  const [listView, setListView] = useState(false);
 
   const petPictures =
         useState(
@@ -42,6 +44,7 @@ export function App() {
         (props) => <petDataContext.Provider {...props} value={[petData, setPetData]}/>,
         (props) => <petWalkDataContext.Provider {...props} value={[petWalkData, setPetWalkData]}/>,
         (props) => <petMealDataContext.Provider {...props} value={[petMealData, setPetMealData]}/>,
+        (props) => <listViewContext.Provider {...props} value={[listView, setListView]}/>,
     );
 
   useEffect(() => {

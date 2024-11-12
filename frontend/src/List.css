@@ -1,0 +1,23 @@
+.log {
+    display: block;
+    margin-left: 30px;
+}
+
+.title p{
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logList ul {
+    background-color: antiquewhite;
+    border-radius:10%;
+}
+
+.logList li {
+    padding: 20px;
+    margin: 10px;
+    background-color: transparent;
+    height: 5px;
+    width: 200px;
+}

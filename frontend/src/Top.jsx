@@ -1,4 +1,5 @@
-import {useContext} from "react";
+import {useState, useContext} from "react";
+import {List} from "./List";
 import {updateContext ,petDataContext, petWalkDataContext, petMealDataContext} from "./context";
 
 import './Top.css'
@@ -9,8 +10,9 @@ export function Top() {
     const [petWalkData] = useContext(petWalkDataContext);
     const [petMealData] = useContext(petMealDataContext);
 
-    console.log(petWalkData)
-    console.log(petMealData)
+    const [petName,setPetName] = useState('');
+    const [walkList,setWalkList] = useState([]);
+    const [mealList,setMealList] = useState([]);
 
     const myPets = petData.map((pet) => {
         const date = new Date(pet.birthday)
@@ -19,19 +21,17 @@ export function Top() {
         function getLastWalkTime() {
             const walkTime = new Date(petWalkData.findLast((data) => data.pet_id === pet.id).walk_time)
             walkTime.setHours(walkTime.getHours() - 9);
-            console.log(walkTime)
             return `${walkTime.getFullYear()}/${walkTime.getMonth() + 1}/${walkTime.getDate()} ${walkTime.getHours().toString().padStart(2, '0')}:${walkTime.getMinutes().toString().padStart(2, '0')}`
         }
 
         function getLastMealTime() {
             const mealTime = new Date(petMealData.findLast((data) => data.pet_id === pet.id).meal_time)
             mealTime.setHours(mealTime.getHours() - 9);
-            console.log(mealTime)
             return `${mealTime.getFullYear()}/${mealTime.getMonth() + 1}/${mealTime.getDate()} ${mealTime.getHours().toString().padStart(2, '0')}:${mealTime.getMinutes().toString().padStart(2, '0')}`
         }
 
         return (
-            <div key={pet.id} className={"pet"}>
+            <div key={pet.id} className={"pet"} style={{display: "flex"}}>
                 <li>
                     <img className={"petImg"} src={pet.picture_src} alt={pet.name}/>
                     <div className={"profile"}>
@@ -41,21 +41,43 @@ export function Top() {
                     </div>
                 </li>
                 <div className="button_line004">
-                    <p>前回の散歩：{getLastWalkTime()}</p>
+                    <div className={"walk"}>
+                        <p>前回の散歩：{getLastWalkTime()}</p>
+                        <img className={"list"} src={"../pic/チェックシートのアイコン.png"} alt={"リスト"}
+                             onClick={() => {
+                                 setPetName(pet.name)
+                                 setWalkList(petWalkData.filter((data) => data.pet_id === pet.id))
+                                 setMealList([])
+                             }}/>
+                    </div>
                     <a href="#" onClick={() => {
                         fetch(`/pets/walk/save?pet_id=${pet.id}&walk_time=${new Date()}`).then(() => setUpdate(true))
-                    }} >散歩行ったよ！</a>
-                    <p>前回のご飯：{getLastMealTime()}</p>
-                    <a href="#" onClick={() => {
-                        fetch(`/pets/meal/save?pet_id=${pet.id}&meal_time=${new Date()}`).then(() => setUpdate(true))
-                    }}>ご飯食べたよ!</a>
+                    }}>散歩行ったよ！</a>
+                    <div className={"walk"}>
+                        <p>前回のご飯：{getLastMealTime()}</p>
+                        <img className={"list"} src={"../pic/チェックシートのアイコン.png"} alt={"リスト"}
+                             onClick={() => {
+                                 setPetName(pet.name)
+                                 setWalkList([])
+                                 setMealList(petMealData.filter((data) => data.pet_id === pet.id))
+                             }}/>
+                    </div>
+                        <a href="#" onClick={() => {
+                            fetch(`/pets/meal/save?pet_id=${pet.id}&meal_time=${new Date()}`).then(() => setUpdate(true))
+                        }}>ご飯食べたよ!</a>
                 </div>
-            </div>
-        )
-    })
+                <List petName={petName} walkList={walkList} mealList={mealList}/>
+                </div>
+                )
+                })
 
-    return (
-        <ul>{myPets}</ul>
+                return (
+        <>
+            <ul>{myPets}</ul>
+            <p className={"addPets"}>
+                <a href="#" className="addButton">ペット追加</a>
+            </p>
+        </>
     )
 
 }
