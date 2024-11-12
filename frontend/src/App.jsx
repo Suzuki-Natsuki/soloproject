@@ -55,6 +55,10 @@ export function App() {
           .then((res) => res.json())
           .then((data) => setPetWalkData(data));
 
+      fetch("/pets/meal")
+          .then((res) => res.json())
+          .then((data) => setPetMealData(data));
+
       setUpdate(false)
 
   },[update])

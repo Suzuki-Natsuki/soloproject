@@ -6,7 +6,7 @@ li{
     margin: 20px;
     padding: 20px;
     list-style:none;
-    width: 200px;
+    width: 300px;
     background-color: #ffdeb5;
     text-align: center;
     border-radius:10%;
@@ -21,7 +21,7 @@ li{
 }
 
 .profile {
-    color: #FFFFFF;
+    color: #68453e;
     text-align: left;
 }
 
