@@ -21,6 +21,11 @@
 #### Node.lsのインストール
 <https://nodejs.org/en/>
 
+#### gitリポジトリのクローン
+```
+git clone git@github.com:Suzuki-Natsuki/soloproject.git
+```
+
 ### バックエンド
 
 #### 1. パッケージのインストール
