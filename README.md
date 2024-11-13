@@ -43,5 +43,10 @@ npm run db:reset
 npm run dev
 ```
 
+#### 5. ローカルホストへアクセス
+```
+<http://localhost:5173/>
+```
+
 
 
