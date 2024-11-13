@@ -73,6 +73,8 @@ export function App() {
       <ComposedProvider>
           <div id={"header"}>
               <img src={"../pic/icon.png"} alt={"TopButton"} onClick={() => setTopView(true)}/>
+          </div>
+          <div className={"contents"}>
               {topView ? <Top /> : <Addpet />}
           </div>
       </ComposedProvider>

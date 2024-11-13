@@ -73,7 +73,7 @@ export function Top() {
                             fetch(`/pets/meal/save?pet_id=${pet.id}&meal_time=${new Date()}`).then(() => setUpdate(true))
                         }}>ご飯食べたよ!</a>
                 </div>
-                <List petName={petName} walkList={walkList} mealList={mealList}/>
+                {petName === pet.name ? <List petName={petName} walkList={walkList} mealList={mealList}/> : null}
                 </div>
                 )
                 })

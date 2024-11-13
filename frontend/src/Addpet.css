@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+}
+
 .input a {
     color: #fff;
     font-size: 16px;
@@ -29,8 +33,3 @@
     width: 200px;
 }
 
-.add {
-    width: 350px;
-    text-align: center;
-
-}

@@ -14,9 +14,9 @@ li{
 }
 
 .petImg {
-    width: 150px;
+    width: auto;
     height: 150px;
-    border-radius:50%;
+    border-radius:10%;
     background-color: antiquewhite;
 
 }
